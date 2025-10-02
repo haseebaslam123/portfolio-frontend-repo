@@ -1,0 +1,279 @@
+.skills-section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+/* Animations */
+.skills-section .fade-up {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.skills-section.animate .fade-up {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ======================= */
+/* Timeline Layout */
+/* ======================= */
+.timeline {
+  display: grid;
+  grid-template-columns:  repeat(3, 1fr);;
+  gap: 40px 60px;
+  align-items: center;
+  position: relative;
+  left: 40px;
+}
+
+
+/* Timeline item */
+.timeline-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.timeline-item.left {
+  left: 0;
+  text-align: right;
+}
+.timeline-item.right {
+  left: 50%;
+  text-align: left;
+}
+
+.timeline-dot {
+  width: 24px;
+  height: 24px;
+  border: 3px solid #333;
+  border-radius: 50%;
+  background: transparent;
+  background: #a8ffe0; /* light color at start */
+
+  /* start hidden */
+  transform: translateY(100px);
+  opacity: 0;
+}
+
+.timeline-item.animate .timeline-dot {
+  animation: 
+    dotSlide 0.5s forwards 0.5s,   /* slide & fade in */
+    dotFill 4s forwards 0.5s; /* fill after 0.5s delay */
+}
+
+
+@keyframes dotFill {
+  from {
+    background: var(--bg-color);
+    box-shadow: 0 0 5px rgba(26, 188, 156, 0.4);
+  }
+  to {
+    background:var(--text-color);
+    box-shadow: 0 0 15px rgba(26, 188, 156, 0.9);
+  }
+}
+
+@keyframes dotSlide {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+    
+  }
+}
+
+
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.timeline-content h3{
+
+  text-align: left;   /* 👈 always start from left */
+  justify-content: flex-start; 
+  align-items: flex-start
+}
+
+.timeline-content {
+  padding: 15px;
+  background:#0891b2;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 255, 150, 0.9);
+  display: inline-block;
+  min-width: 200px;
+  z-index: 1;
+  position: relative;
+  margin-left: 10px;
+  animation: glow 1.2s infinite alternate;
+
+  /* Default hidden */
+  transform: translateX(-150%);
+  opacity: 0;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 10px rgba(76, 218, 128, 0.4),
+                0 0 20px rgba(76, 218, 128, 0.3);
+  }
+  to {
+    box-shadow: 0 0 25px rgba(76, 218, 128, 0.8),
+                0 0 50px rgba(76, 218, 128, 0.6);
+  }
+}
+
+.timeline-item.animate .timeline-content {
+  animation: slide 1s forwards;
+}
+
+@keyframes slide {
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+
+/* Skill title */
+.timeline-content h3 {
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: monospace;
+}
+
+/* Progress bar container */
+.progress {
+  width: 100%;
+  height: 22px;
+  border: 2px solid #1abc9c;
+  border-radius: 8px;
+  background: transparent;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Progress bar fill */
+.progress-bar {
+  --progress: 0%;
+  width: 0;
+  height: 100%;
+  background-color: rgba(223, 228, 227, 0.6); /* light start */
+  position: relative;
+  overflow: hidden; /* keep wave inside */
+}
+
+.progress-bar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background: radial-gradient(circle at 10% 50%, rgba(255,255,255,0.4) 25%, transparent 26%) repeat-x;
+  background-size: 40px 100%;
+  animation: waveMove 2s linear infinite;
+  opacity: 0.5; /* subtle effect */
+}
+
+.animate-bar {
+  animation: fillBar 4s forwards;
+}
+
+@keyframes fillBar {
+  from {
+    width: 0;
+    background-color: rgba(202, 6, 29, 0.8); /* light */
+  }
+  to {
+    width: var(--progress);
+    background-color: #22c55e; /* dark */
+  }
+}
+
+@keyframes waveMove {
+  100% {
+    transform: translateX(-40px); /* wave slides left */
+  }
+}
+
+
+
+
+
+
+/* Percentage text */
+.progress-text {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* ======================= */
+/* Skill icons styling */
+/* ======================= */
+.skills-icons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin: 25px 0 40px;
+}
+
+.skills-icons img {
+  width: 42px;
+  height: 42px;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+.skills-icons img.icon-animate {
+  opacity: 1;
+  transform: scale(1);
+}
+.skills-icons img:hover {
+  transform: scale(1.2);
+}
+
+/* ======================= */
+/* Section heading */
+/* ======================= */
+.skills-section h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #1abc9c;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  display: inline-block;
+}
+.skills-section h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: #1abc9c;
+  margin: 8px auto 0;
+  border-radius: 2px;
+}
+.skills-section p {
+  font-size: 1.1rem;
+  color: var(--text-color, #333);
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.p1{
+  font-family:monospace;
+}
+
+.h2h{
+  font-family: monospace;
+}

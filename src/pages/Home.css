@@ -1,0 +1,203 @@
+.home {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50px;
+  margin-left: 80px;   /* ✅ replaced left: 80px */
+  flex-wrap: wrap;
+  gap: 40px; /* spacing between left & right */
+  font-family: monospace;
+  scroll-margin-top: 0; /* ensures top aligns correctly */
+}
+
+.home-left {
+  flex: 1;
+  max-width: 600px;   /* prevents text from expanding too far */
+  font-family: monospace;
+}
+
+.home-right {
+  flex-shrink: 0;     /* image won't shrink */
+  display: flex;
+  justify-content: center;
+  width: 320px;       /* stable image width */
+  font-family: monospace;
+  position: relative;
+  left: 10px;
+}
+
+.home-right img {
+  width: 300px;   
+  height: auto;   
+  object-fit: contain; 
+  margin-right: 80px;   /* ✅ replaced relative right */
+  margin-bottom: 30px;  /* ✅ replaced relative bottom */
+}
+
+.name {
+  font-size: 60px;
+  font-weight: bold;
+  font-family: monospace;
+}
+
+.role {
+  color: var(--text-color, #00a86b); /* fallback if var missing */
+  font-size: 1.5rem;
+  font-weight: 300; /* thin font */
+  font-family: monospace;
+  letter-spacing: 0.5px;
+  white-space: nowrap;     
+  overflow: visible;        
+  text-overflow: ellipsis; 
+  max-width: 100%;         
+  display: block;
+  margin-top: -11px; /* ✅ replaced relative positioning */
+}
+
+.experience {
+  margin: 10px 0;
+  font-size: 15px;
+  font-family: monospace;
+  margin-bottom: 10px; /* instead of bottom offset */
+}
+
+.contact-btn {
+  display: inline-block;
+  margin: 15px 0;
+  padding: 15px 50px;
+  background: #22c55e;
+  color: white;
+  border-radius: 15px;
+  text-decoration: none;
+  font-family: monospace;
+  cursor: pointer !important;   /* 🔥 force hand cursor */
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
+              background 0.2s ease,
+              box-shadow 0.2s ease;
+  will-change: transform;
+}
+
+.contact-btn:hover {
+  transform: translateY(-8px);
+  background: #1da851;
+  box-shadow: 0 8px 25px #9d00ff;
+  cursor: pointer;   /* ensure pointer remains */
+  transform: translateY(-5px);
+}
+
+.social-links {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+  justify-content: flex-start;
+  margin-left: 25px;  /* ✅ replaced relative left */
+  margin-bottom: 30px; /* ✅ replaced relative bottom */
+  font-family: monospace;
+}
+
+.social-links a {
+  margin-right: 15px;
+  text-decoration: none;
+  color: #555;
+  top: 15px;
+}
+
+.social-links .icon {
+  font-size: 28px;
+  color: inherit;
+  transition: transform 0.3s ease, color 0.3s ease;
+  cursor: pointer !important;   /* 🔥 force hand cursor */
+}
+
+.social-links .icon:hover {
+  transform: scale(1.2);
+}
+
+.social-links .icon:nth-child(1):hover {
+  color: #25d366; /* WhatsApp green */
+}
+
+.social-links .icon:nth-child(2):hover {
+  color: #d44638; /* Gmail red */
+}
+
+.wave {
+  display: inline-block;
+  animation: wave 1.5s infinite;
+}
+
+@keyframes wave {
+  0% { transform: rotate(0deg); }
+  20% { transform: rotate(20deg); }
+  40% { transform: rotate(-15deg); }
+  60% { transform: rotate(20deg); }
+  80% { transform: rotate(-10deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* Headings */
+h2 {
+  font-size: 15px;
+  font-family: monospace;
+  margin-top: 35px;   /* ✅ replaced relative top */
+  margin-left: 5px;   /* ✅ replaced relative left */
+  position: relative;
+  top: 20px;
+}
+
+.typed-cursor {
+  color: var(--cursor-color, black);
+  font-weight: bold;
+  animation: blink 0.7s infinite;
+  font-family: monospace;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Slide in from left animations */
+.home .slide-in-left {
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.home .slide-in-right {
+  opacity: 0;
+  transform: translateX(100px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.home.animate .slide-in-left {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.home.animate .slide-in-right {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

@@ -1,0 +1,184 @@
+/* Footer Styles */
+.footer {
+  background: rgba(0, 0, 0, 0.096); /* More transparent background */
+  backdrop-filter: blur(15px); /* Stronger blur effect */
+  padding: 20px 0;
+  position: relative;
+  z-index: 100;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Left Section - Website Info */
+.footer-left {
+  display: flex;
+  align-items: center;
+}
+
+.website-info {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.website-text {
+  color: var(--text-color);
+  font-family:  monospace;
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.icon-overlay {
+  font-size: 1.7rem;
+  opacity: 0.8;
+}
+
+/* Middle Section - Made with */
+.footer-middle {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.made-with-text {
+  color: var(--text-color);
+  font-family:  monospace;
+  font-size: 0.9rem;
+  opacity: 0.9;
+  position: relative;
+  right: 30px;
+  
+}
+
+.tech-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.tech-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.react-icon {
+  background: transparent;
+  color: #61dafb;
+  animation: rotate 3s linear infinite;
+  font-size: 35px;
+  position: relative;
+  right: 30px;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.tech-icon:hover {
+  transform: scale(1.1);
+}
+
+/* Right Section - Social Links */
+.footer-right {
+  display: flex;
+  align-items: center;
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+}
+
+.social-link {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 1.2rem;
+}
+
+.whatsapp {
+  background: #25d366;
+  color: white;
+}
+
+.email {
+  background: #ea4335;
+  color: white;
+}
+
+.social-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+  
+  .website-text {
+    font-size: 1rem;
+  }
+  
+  .made-with-text {
+    font-size: 0.8rem;
+  }
+  
+  .tech-icon {
+    width: 25px;
+    height: 25px;
+    font-size: 1rem;
+  }
+  
+  .social-link {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-content {
+    padding: 0 15px;
+  }
+  
+  .footer-middle {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .social-links {
+    gap: 10px;
+  }
+}

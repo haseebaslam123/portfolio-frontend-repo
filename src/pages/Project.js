@@ -1,0 +1,92 @@
+import React, { useEffect, useRef, useState } from "react";
+import ProjectCard from "./Components/ProjectCard.js";
+import "./Project.css";
+
+export default function Projects() {
+  const sectionRef = useRef(null);
+  const [animate, setAnimate] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setAnimate(true);   // show when visible
+          } else {
+            setAnimate(false);  // hide when leaving
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
+
+    return () => {
+      if (sectionRef.current) observer.unobserve(sectionRef.current);
+    };
+  }, []);
+
+  const projects = [
+    {
+      title: "Amazon Clone",
+      description:
+        "Developed a fully responsive clone of Amazon’s product page using HTML, CSS, and JavaScript. Implemented structured layouts, interactive elements, and styled components to closely replicate the look and feel of a professional e-commerce platform.",
+      image: "/icons/amazon.PNG",
+      tags: ["HTML", "CSS", "JavaScript"],
+      demoLink: "amazon-starter-page.netlify.app",
+    
+    },
+    
+    
+    {
+      title: "Tic-Tac-Toe Game",
+      description:
+        "Created a browser-based Tic-Tac-Toe game using HTML, CSS, and JavaScript. Designed an engaging user interface with real-time win/draw detection logic and smooth interactivity for a fun user experience.",
+      image: "/icons/tiktoe.PNG",
+      tags: ["HTML", "CSS", "JavaScript"],
+      demoLink: "tik-toe-game.netlify.app",
+    
+    },
+
+    {
+      title: "Weather Detection App",
+      description:
+        "Built a responsive weather app using React (JSX), HTML, CSS, and JavaScript that fetches real-time conditions and a 5-day forecast for any city worldwide with a clean, interactive UI.",
+      image: "/icons/weather.PNG",
+      tags: ["React.js", "HTML", "CSS", "JavaScript"],
+      demoLink: "check-of-weather.netlify.app",
+    
+    },
+
+    {
+      title: "Movie Explorer App",
+      description:
+        "Developed an interactive movie exploration platform using React (JSX), JavaScript, HTML, and Tailwind CSS. The app lets users browse upcoming, popular, and top-rated movies, watch trailers, view cast details, and add favorites for quick access, delivering a dynamic and engaging entertainment experience.",
+      image: "/icons/movies.PNG",
+      tags: ["React.jsx", "HTML", "CSS", "JavaScript"],
+      demoLink: "movies-trailer-exhibition.netlify.app",
+    
+    },
+  ];
+
+  return (
+    <section
+      ref={sectionRef}
+      className={`projects-section ${animate ? "animate-section" : "hidden-section"}`}
+    >
+      <h2 className={`section-title ${animate ? "animate-title" : "hidden-title"}`}>
+        My Projects
+      </h2>
+      <div className="projects-grid">
+        {projects.map((project, index) => (
+          <ProjectCard
+            key={index}
+            {...project}
+            className={animate ? "animate-card" : "hidden-card"}
+          />
+        ))}
+      </div>
+    </section>
+  );
+}
