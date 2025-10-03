@@ -1,0 +1,22 @@
+/* Mobile Fix - Only for viewport issues */
+@media (max-width: 768px) {
+  html {
+    font-size: 16px; /* Prevents text zoom */
+  }
+  
+  body {
+    overflow-x: hidden; /* Prevents horizontal scroll */
+    -webkit-text-size-adjust: 100%; /* Prevents iOS zoom */
+  }
+  
+  /* Force each section to take full screen height */
+  section,
+  .home-section,
+  .about-section, 
+  .skills-section,
+  .projects-section,
+  .contact-section {
+    min-height: 100vh !important;
+    min-height: 100dvh !important; /* For mobile browsers */
+  }
+}

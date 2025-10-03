@@ -6,7 +6,8 @@ import About from "./pages/About";
 import Skills from "./pages/Skills";
 import Project from "./pages/Project";
 import Contact from "./pages/Contact";
-import Footer from "./pages/Components/Footer";
+import Footer from "./pages/Components/Footer"; 
+import "./pages/mobile.css";
 import useGlobalScrollAnimations from "./pages/Components/useGlobalScrollAnimations.js" // 👈 import the hook
 
 function App() {
