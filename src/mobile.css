@@ -1,0 +1,35 @@
+/* Mobile-only fixes - Desktop remains unchanged */
+@media only screen and (max-width: 768px) {
+  
+  /* Force each section to take full mobile screen */
+  #home,
+  #about,
+  #skills,
+  #projects,
+  #contact {
+    min-height: 100vh !important;
+    min-height: 100dvh !important; /* Better for mobile browsers */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    scroll-snap-align: start !important;
+  }
+
+  /* Smooth scroll snapping for mobile */
+  html {
+    scroll-snap-type: y mandatory;
+    overflow-x: hidden;
+  }
+
+  body {
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Prevent horizontal scroll */
+  * {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+}

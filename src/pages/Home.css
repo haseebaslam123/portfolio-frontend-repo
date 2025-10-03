@@ -10,6 +10,7 @@
   scroll-margin-top: 0; /* ensures top aligns correctly */
 }
 
+
 .home-left {
   flex: 1;
   max-width: 600px;   /* prevents text from expanding too far */
