@@ -7,28 +7,27 @@ export default function Skills() {
   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setAnimate(true);   // start animation
-        } else {
-          setAnimate(false);  // reset when out of view
-        }
-      });
-    },
-    { threshold: 0.3 }
-  );
+    const currentSkills = skillsRef.current; // ref copied
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setAnimate(true);
+          } else {
+            setAnimate(false);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
 
-  if (skillsRef.current) observer.observe(skillsRef.current);
+    if (currentSkills) observer.observe(currentSkills);
 
-  return () => {
-    if (skillsRef.current) observer.unobserve(skillsRef.current);
-  };
-}, []);
+    return () => {
+      if (currentSkills) observer.unobserve(currentSkills); // cleanup using local variable
+    };
+  }, []);
 
-
-  // ✅ Skill icons
   const skillIcons = [
     { name: "Python", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
     { name: "C", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" },
@@ -46,7 +45,6 @@ export default function Skills() {
     { name: "MongoDB", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
   ];
 
-  // ✅ Skills with percentages
   const skills = [
     { name: "HTML", percent: 100 },
     { name: "CSS", percent: 100 },
@@ -60,7 +58,6 @@ export default function Skills() {
     { name: "C++", percent: 95 },
     { name: "C#", percent: 95 },
     { name: "TypeScript", percent: 80 },
-    
   ];
 
   return (
@@ -69,13 +66,9 @@ export default function Skills() {
       ref={skillsRef}
       className={`skills-section fade-up ${animate ? "animate" : ""}`}
     >
-      {/* Heading */}
       <h2 className="h2h fade-up">My Skills</h2>
-      <p className=" p1 fade-up">
-        Here are some of the technologies and languages I work with:
-      </p>
+      <p className="p1 fade-up">Here are some of the technologies and languages I work with:</p>
 
-      {/* Skill icons */}
       <div className="skills-icons fade-up">
         {skillIcons.map((skill, index) => (
           <img
@@ -88,7 +81,6 @@ export default function Skills() {
         ))}
       </div>
 
-      {/* Timeline with alternating left/right items */}
       <div className="timeline">
         {skills.map((s, i) => (
           <SkillProgress

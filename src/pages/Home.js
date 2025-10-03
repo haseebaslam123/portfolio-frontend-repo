@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useRef } from "react";
+import  { useEffect, useRef } from "react";
 import { FaWhatsapp, FaEnvelope } from "react-icons/fa"; // Import icons
 import { ReactTyped } from "react-typed";
 import "./Home.css";

@@ -7,23 +7,24 @@ export default function Projects() {
   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
+    const currentSection = sectionRef.current; // ref copied
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setAnimate(true);   // show when visible
+            setAnimate(true);
           } else {
-            setAnimate(false);  // hide when leaving
+            setAnimate(false);
           }
         });
       },
       { threshold: 0.3 }
     );
 
-    if (sectionRef.current) observer.observe(sectionRef.current);
+    if (currentSection) observer.observe(currentSection);
 
     return () => {
-      if (sectionRef.current) observer.unobserve(sectionRef.current);
+      if (currentSection) observer.unobserve(currentSection); // cleanup using local variable
     };
   }, []);
 
@@ -34,39 +35,31 @@ export default function Projects() {
         "Developed a fully responsive clone of Amazon’s product page using HTML, CSS, and JavaScript. Implemented structured layouts, interactive elements, and styled components to closely replicate the look and feel of a professional e-commerce platform.",
       image: "/icons/amazon.PNG",
       tags: ["HTML", "CSS", "JavaScript"],
-      demoLink: "amazon-starter-page.netlify.app",
-    
+      demoLink: "https://amazon-starter-page.netlify.app",
     },
-    
-    
     {
       title: "Tic-Tac-Toe Game",
       description:
         "Created a browser-based Tic-Tac-Toe game using HTML, CSS, and JavaScript. Designed an engaging user interface with real-time win/draw detection logic and smooth interactivity for a fun user experience.",
       image: "/icons/tiktoe.PNG",
       tags: ["HTML", "CSS", "JavaScript"],
-      demoLink: "tik-toe-game.netlify.app",
-    
+      demoLink: "https://tik-toe-game.netlify.app",
     },
-
     {
       title: "Weather Detection App",
       description:
         "Built a responsive weather app using React (JSX), HTML, CSS, and JavaScript that fetches real-time conditions and a 5-day forecast for any city worldwide with a clean, interactive UI.",
       image: "/icons/weather.PNG",
       tags: ["React.js", "HTML", "CSS", "JavaScript"],
-      demoLink: "check-of-weather.netlify.app",
-    
+      demoLink: "https://check-of-weather.netlify.app",
     },
-
     {
       title: "Movie Explorer App",
       description:
         "Developed an interactive movie exploration platform using React (JSX), JavaScript, HTML, and Tailwind CSS. The app lets users browse upcoming, popular, and top-rated movies, watch trailers, view cast details, and add favorites for quick access, delivering a dynamic and engaging entertainment experience.",
       image: "/icons/movies.PNG",
       tags: ["React.jsx", "HTML", "CSS", "JavaScript"],
-      demoLink: "movies-trailer-exhibition.netlify.app",
-    
+      demoLink: "https://movies-trailer-exhibition.netlify.app",
     },
   ];
 
