@@ -79,3 +79,87 @@ html {
 }
 
 
+
+
+
+
+
+
+
+/* MOBILE FIX - FINAL VERSION */
+@media only screen and (max-width: 768px) {
+  
+  /* Prevent zoom out */
+  * {
+    -webkit-text-size-adjust: 100% !important;
+    -moz-text-size-adjust: 100% !important;
+    -ms-text-size-adjust: 100% !important;
+    text-size-adjust: 100% !important;
+  }
+
+  html {
+    width: 100vw !important;
+    overflow-x: hidden !important;
+    font-size: 16px !important;
+  }
+
+  body {
+    width: 100vw !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Force full screen sections */
+  section#home,
+  section#about,
+  section#skills,
+  section#projects,
+  section#contact {
+    min-height: 100vh !important;
+    height: auto !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    padding: 90px 20px 30px 20px !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Header navigation - vertical stacking */
+  header.header {
+    position: fixed !important;
+    top: 0 !important;
+    width: 100vw !important;
+    z-index: 9999 !important;
+    padding: 15px !important;
+  }
+
+  header.header nav.nav {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  header.header nav.nav a,
+  header.header nav.nav button.toggle-btn {
+    display: block !important;
+    width: 100% !important;
+    text-align: left !important;
+    padding: 12px 15px !important;
+    font-size: 14px !important;
+    margin: 0 !important;
+  }
+
+  /* Text wrapping */
+  h1, h2, h3, h4, h5, h6, p, span, div {
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+
+  /* Images responsive */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+}
