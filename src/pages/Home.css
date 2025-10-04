@@ -1,98 +1,146 @@
+/* CSS Variables for easy customization */
+:root {
+  --home-padding: 50px;
+  --home-gap: 40px;
+  --home-left-max-width: 600px;
+  --home-right-width: 320px;
+  --home-right-img-width: 300px;
+  --home-right-img-margin-right: 80px;
+  --home-right-img-margin-bottom: 30px;
+  
+  --name-font-size: 60px;
+  --role-font-size: 1.5rem;
+  --experience-font-size: 15px;
+  --h2-font-size: 15px;
+  
+  --contact-btn-padding: 15px 50px;
+  --contact-btn-border-radius: 15px;
+  --contact-btn-bg: #22c55e;
+  --contact-btn-bg-hover: #1da851;
+  --contact-btn-shadow-hover: 0 8px 25px #9d00ff;
+  --contact-btn-lift: -5px;
+  
+  --social-icon-size: 28px;
+  --social-gap: 20px;
+  --social-margin-left: 25px;
+  --social-margin-bottom: 30px;
+  
+  --whatsapp-color: #25d366;
+  --gmail-color: #d44638;
+  
+  --animation-duration: 0.8s;
+  --transition-speed: 0.3s;
+}
+
+/* Home Section */
 .home {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 50px;
-  margin-left: 80px;   /* ✅ replaced left: 80px */
+  padding: var(--home-padding);
+  margin-left: 80px;
   flex-wrap: wrap;
-  gap: 40px; /* spacing between left & right */
+  gap: var(--home-gap);
   font-family: monospace;
-  scroll-margin-top: 0; /* ensures top aligns correctly */
+  scroll-margin-top: 0;
 }
 
-
+/* Left Section */
 .home-left {
   flex: 1;
-  max-width: 600px;   /* prevents text from expanding too far */
+  max-width: var(--home-left-max-width);
   font-family: monospace;
 }
 
+/* Right Section */
 .home-right {
-  flex-shrink: 0;     /* image won't shrink */
+  flex-shrink: 0;
   display: flex;
   justify-content: center;
-  width: 320px;       /* stable image width */
+  width: var(--home-right-width);
   font-family: monospace;
   position: relative;
   left: 10px;
 }
 
 .home-right img {
-  width: 300px;   
-  height: auto;   
-  object-fit: contain; 
-  margin-right: 80px;   /* ✅ replaced relative right */
-  margin-bottom: 30px;  /* ✅ replaced relative bottom */
+  width: var(--home-right-img-width);
+  height: auto;
+  object-fit: contain;
+  margin-right: var(--home-right-img-margin-right);
+  margin-bottom: var(--home-right-img-margin-bottom);
 }
 
+/* Text Styles */
 .name {
-  font-size: 60px;
+  font-size: var(--name-font-size);
   font-weight: bold;
   font-family: monospace;
 }
 
 .role {
-  color: var(--text-color, #00a86b); /* fallback if var missing */
-  font-size: 1.5rem;
-  font-weight: 300; /* thin font */
+  color: var(--text-color, #00a86b);
+  font-size: var(--role-font-size);
+  font-weight: 300;
   font-family: monospace;
   letter-spacing: 0.5px;
-  white-space: nowrap;     
-  overflow: visible;        
-  text-overflow: ellipsis; 
-  max-width: 100%;         
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: ellipsis;
+  max-width: 100%;
   display: block;
-  margin-top: -11px; /* ✅ replaced relative positioning */
+  margin-top: -11px;
 }
 
 .experience {
   margin: 10px 0;
-  font-size: 15px;
+  font-size: var(--experience-font-size);
   font-family: monospace;
-  margin-bottom: 10px; /* instead of bottom offset */
+  margin-bottom: 10px;
 }
 
+/* Headings */
+h2 {
+  font-size: var(--h2-font-size);
+  font-family: monospace;
+  margin-top: 35px;
+  margin-left: 5px;
+  position: relative;
+  top: 20px;
+}
+
+/* Contact Button */
 .contact-btn {
   display: inline-block;
   margin: 15px 0;
-  padding: 15px 50px;
-  background: #22c55e;
+  padding: var(--contact-btn-padding);
+  background: var(--contact-btn-bg);
   color: white;
-  border-radius: 15px;
+  border-radius: var(--contact-btn-border-radius);
   text-decoration: none;
   font-family: monospace;
-  cursor: pointer !important;   /* 🔥 force hand cursor */
-  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
+  cursor: pointer !important;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
               background 0.2s ease,
               box-shadow 0.2s ease;
   will-change: transform;
 }
 
 .contact-btn:hover {
-  transform: translateY(-8px);
-  background: #1da851;
-  box-shadow: 0 8px 25px #9d00ff;
-  cursor: pointer;   /* ensure pointer remains */
-  transform: translateY(-5px);
+  transform: translateY(var(--contact-btn-lift));
+  background: var(--contact-btn-bg-hover);
+  box-shadow: var(--contact-btn-shadow-hover);
+  cursor: pointer;
 }
 
+/* Social Links */
 .social-links {
   margin-top: 20px;
   display: flex;
-  gap: 20px;
+  gap: var(--social-gap);
   justify-content: flex-start;
-  margin-left: 25px;  /* ✅ replaced relative left */
-  margin-bottom: 30px; /* ✅ replaced relative bottom */
+  margin-left: var(--social-margin-left);
+  margin-bottom: var(--social-margin-bottom);
   font-family: monospace;
 }
 
@@ -104,10 +152,11 @@
 }
 
 .social-links .icon {
-  font-size: 28px;
+  font-size: var(--social-icon-size);
   color: inherit;
-  transition: transform 0.3s ease, color 0.3s ease;
-  cursor: pointer !important;   /* 🔥 force hand cursor */
+  transition: transform var(--transition-speed) ease, 
+              color var(--transition-speed) ease;
+  cursor: pointer !important;
 }
 
 .social-links .icon:hover {
@@ -115,13 +164,14 @@
 }
 
 .social-links .icon:nth-child(1):hover {
-  color: #25d366; /* WhatsApp green */
+  color: var(--whatsapp-color);
 }
 
 .social-links .icon:nth-child(2):hover {
-  color: #d44638; /* Gmail red */
+  color: var(--gmail-color);
 }
 
+/* Wave Animation */
 .wave {
   display: inline-block;
   animation: wave 1.5s infinite;
@@ -136,16 +186,7 @@
   100% { transform: rotate(0deg); }
 }
 
-/* Headings */
-h2 {
-  font-size: 15px;
-  font-family: monospace;
-  margin-top: 35px;   /* ✅ replaced relative top */
-  margin-left: 5px;   /* ✅ replaced relative left */
-  position: relative;
-  top: 20px;
-}
-
+/* Typing Cursor */
 .typed-cursor {
   color: var(--cursor-color, black);
   font-weight: bold;
@@ -158,11 +199,12 @@ h2 {
   51%, 100% { opacity: 0; }
 }
 
-/* Slide in from left animations */
+/* Slide-in Animations */
 .home .slide-in-left {
   opacity: 0;
   transform: translateX(-100px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition: opacity var(--animation-duration) ease, 
+              transform var(--animation-duration) ease;
 }
 
 .home .slide-in-right {
@@ -203,7 +245,33 @@ h2 {
   }
 }
 
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  :root {
+    --home-padding: 30px 20px;
+    --name-font-size: 40px;
+    --role-font-size: 1.2rem;
+    --home-right-img-width: 250px;
+    --home-right-img-margin-right: 0;
+  }
 
+  .home {
+    margin-left: 0;
+    flex-direction: column;
+    text-align: center;
+  }
 
+  .home-left {
+    max-width: 100%;
+  }
 
+  .home-right {
+    width: 100%;
+    left: 0;
+  }
 
+  .social-links {
+    justify-content: center;
+    margin-left: 0;
+  }
+}

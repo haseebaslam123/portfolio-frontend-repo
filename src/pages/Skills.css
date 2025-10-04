@@ -1,5 +1,34 @@
+/* CSS Variables - only for easy customization, NO visual changes */
+:root {
+  --skills-padding: 80px 20px;
+  --timeline-gap-row: 40px;
+  --timeline-gap-col: 60px;
+  --timeline-left: 40px;
+  --timeline-item-gap: 15px;
+  
+  --dot-size: 24px;
+  --dot-border: 3px;
+  
+  --content-padding: 15px;
+  --content-min-width: 200px;
+  --content-margin-left: 10px;
+  
+  
+  --icon-size: 42px;
+  --icon-gap: 18px;
+  --icon-margin-top: 25px;
+  --icon-margin-bottom: 40px;
+  
+  --title-size: 2rem;
+  --text-size: 1.1rem;
+  --skill-title-size: 1.1rem;
+  
+  --underline-width: 60px;
+  --underline-height: 3px;
+}
+
 .skills-section {
-  padding: 80px 20px;
+  padding: var(--skills-padding);
   text-align: center;
 }
 
@@ -19,11 +48,11 @@
 /* ======================= */
 .timeline {
   display: grid;
-  grid-template-columns:  repeat(3, 1fr);;
-  gap: 40px 60px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--timeline-gap-row) var(--timeline-gap-col);
   align-items: center;
   position: relative;
-  left: 40px;
+  left: var(--timeline-left);
 }
 
 
@@ -31,7 +60,7 @@
 .timeline-item {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: var(--timeline-item-gap);
 }
 
 .timeline-item.left {
@@ -44,9 +73,9 @@
 }
 
 .timeline-dot {
-  width: 24px;
-  height: 24px;
-  border: 3px solid #333;
+  width: var(--dot-size);
+  height: var(--dot-size);
+  border: var(--dot-border) solid #333;
   border-radius: 50%;
   background: transparent;
   background: #a8ffe0; /* light color at start */
@@ -97,15 +126,15 @@ body {
 }
 
 .timeline-content {
-  padding: 15px;
+  padding: var(--content-padding);
   background:#0891b2;
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 255, 150, 0.9);
   display: inline-block;
-  min-width: 200px;
+  min-width: var(--content-min-width);
   z-index: 1;
   position: relative;
-  margin-left: 10px;
+  margin-left: var(--content-margin-left);
   animation: glow 1.2s infinite alternate;
 
   /* Default hidden */
@@ -139,7 +168,7 @@ body {
 /* Skill title */
 .timeline-content h3 {
   margin-bottom: 8px;
-  font-size: 1.1rem;
+  font-size: var(--skill-title-size);
   font-weight: 600;
   font-family: monospace;
 }
@@ -222,13 +251,13 @@ body {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 18px;
-  margin: 25px 0 40px;
+  gap: var(--icon-gap);
+  margin: var(--icon-margin-top) 0 var(--icon-margin-bottom);
 }
 
 .skills-icons img {
-  width: 42px;
-  height: 42px;
+  width: var(--icon-size);
+  height: var(--icon-size);
   opacity: 0;
   transform: scale(0.8);
   transition: transform 0.5s ease, opacity 0.5s ease;
@@ -245,7 +274,7 @@ body {
 /* Section heading */
 /* ======================= */
 .skills-section h2 {
-  font-size: 2rem;
+  font-size: var(--title-size);
   font-weight: 700;
   margin-bottom: 10px;
   color: #1abc9c;
@@ -257,14 +286,14 @@ body {
 .skills-section h2::after {
   content: "";
   display: block;
-  width: 60px;
-  height: 3px;
+  width: var(--underline-width);
+  height: var(--underline-height);
   background: #1abc9c;
   margin: 8px auto 0;
   border-radius: 2px;
 }
 .skills-section p {
-  font-size: 1.1rem;
+  font-size: var(--text-size);
   color: var(--text-color, #333);
   margin-bottom: 30px;
   line-height: 1.6;
@@ -276,4 +305,41 @@ body {
 
 .h2h{
   font-family: monospace;
+}
+
+
+
+/* Mobile Responsive */
+@media (max-width: 968px) {
+  :root {
+    --skills-padding: 60px 15px;
+    --timeline-left-offset: 0;
+    --section-title-size: 1.5rem;
+    --section-text-size: 1rem;
+    --icon-size: 36px;
+    --icon-gap: 12px;
+  }
+
+  .timeline {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .timeline-item.left,
+  .timeline-item.right {
+    left: 0;
+    text-align: left;
+  }
+
+  .timeline-content {
+    min-width: 100%;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --skills-padding: 40px 10px;
+    --icon-size: 32px;
+  }
 }

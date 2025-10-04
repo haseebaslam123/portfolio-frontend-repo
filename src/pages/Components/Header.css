@@ -1,48 +1,79 @@
+/* CSS Variables for easy theming */
+:root {
+  --header-padding: 20px 40px;
+  --header-blur: 10px;
+  --header-z-index: 1000;
+  --logo-font-size: 30px;
+  --nav-link-font-size: 14px;
+  --nav-gap: 25px;
+  --toggle-width: 50px;
+  --toggle-height: 26px;
+  --toggle-dot-size: 20px;
+  --transition-speed: 0.3s;
+}
+
+/* Dark/Light theme variables */
+body.dark {
+  --bg-color: #111;
+  --text-color: #fff;
+  --header-bg: rgba(17, 17, 17, 0.6);
+  --toggle-bg: #22c55e;
+  --nav-hover-color: darkgray;
+}
+
+body.light {
+  --bg-color: #fff;
+  --text-color: #111;
+  --header-bg: rgba(255, 255, 255, 0.6);
+  --toggle-bg: darkmagenta;
+  --nav-hover-color: darkgray;
+}
+
+/* Header */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 40px;
-  background: var(--header-bg); /* dynamic based on theme */
-  backdrop-filter: blur(4px); /* glass effect */
-  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  padding: var(--header-padding);
+  background: var(--header-bg);
+  backdrop-filter: blur(var(--header-blur));
+  -webkit-backdrop-filter: blur(var(--header-blur));
   color: var(--text-color);
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: var(--header-z-index);
   border-bottom: none;
   font-family: monospace;
 }
 
-
+/* Logo */
 .logo {
-  
   color: var(--text-color);
-   font-size: 30px;
+  font-size: var(--logo-font-size);
   font-weight: 400;
   display: inline-flex;
   align-items: center;
   position: relative;
   font-family: monospace;
-  left: 80px;
+  margin: 0;
 }
 
 .bracket-icon {
   font-size: 18px;
-  margin: 0;        /* remove extra spacing */
+  margin: 0;
   color: var(--text-color);
 }
 
 .logo span, 
 .logo svg {
-  margin: 0 1px;    /* keep text and icons tight */
+  margin: 0 1px;
 }
 
 /* Navigation */
 .nav {
   display: flex;
   align-items: center;
-  gap: 25px;
+  gap: var(--nav-gap);
   font-family: monospace;
 }
 
@@ -52,46 +83,38 @@
   font-weight: 500;
   font-family: monospace;
   letter-spacing: 1px;
-  text-transform: uppercase; /* makes HOME, ABOUT look professional */
-  font-size: 14px;
-  transition: color 0.3s ease, transform 0.2s ease;
+  text-transform: uppercase;
+  font-size: var(--nav-link-font-size);
+  transition: color var(--transition-speed) ease, transform 0.2s ease;
 }
 
 .nav a:hover {
-  color:darkgray; /* green hover */
-  transform: translateY(-2px); /* small lift effect */
+  color: var(--nav-hover-color);
+  transform: translateY(-2px);
 }
 
 /* Toggle button */
 .toggle-btn {
-  width: 50px;
-  height: 26px;
-  border-radius: 50px;
+  width: var(--toggle-width);
+  height: var(--toggle-height);
+  border-radius: calc(var(--toggle-height) * 2);
   border: none;
   position: relative;
   cursor: pointer;
-  margin-right: 15px;
+  margin: 0 15px 0 0;
   display: flex;
   align-items: center;
   padding: 3px;
-  transition: background 0.3s ease;
-}
-
-/* Change toggle background depending on theme */
-body.dark .toggle-btn {
-  background: #22c55e; /* green in dark mode */
-}
-
-body.light .toggle-btn {
-  background: darkmagenta; /* gray in light mode */
+  background: var(--toggle-bg);
+  transition: background var(--transition-speed) ease;
 }
 
 .toggle-btn .dot {
-  width: 20px;
-  height: 20px;
+  width: var(--toggle-dot-size);
+  height: var(--toggle-dot-size);
   border-radius: 50%;
   background: white;
-  transition: transform 0.3s ease;
+  transition: transform var(--transition-speed) ease;
 }
 
 .toggle-btn .dot.dark {
@@ -99,23 +122,112 @@ body.light .toggle-btn {
 }
 
 .toggle-btn .dot.light {
-  transform: translateX(24px);
+  transform: translateX(calc(var(--toggle-width) - var(--toggle-dot-size) - 6px));
 }
 
-/* Dark/Light themes */
-body.dark {
-  --bg-color: #111;
-  --text-color: #fff;
-  --header-bg: rgba(17, 17, 17, 0.9); /* almost black, blends in */
+/* Hamburger menu (hidden by default, shown on mobile) */
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
 }
 
-body.light {
-  --bg-color: #fff;
-  --text-color: #111;
-  --header-bg: rgba(255, 255, 255, 0.9); /* almost white, blends in */
+.hamburger-menu span {
+  width: 25px;
+  height: 3px;
+  background: var(--text-color);
+  transition: all var(--transition-speed) ease;
 }
 
+.hamburger-menu.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
 
+.hamburger-menu.open span:nth-child(2) {
+  opacity: 0;
+}
 
+.hamburger-menu.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
 
+/* Side panel (mobile menu) */
+.side-panel {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 70%;
+  max-width: 300px;
+  height: 100vh;
+  background: var(--header-bg);
+  backdrop-filter: blur(var(--header-blur));
+  -webkit-backdrop-filter: blur(var(--header-blur));
+  display: flex;
+  flex-direction: column;
+  padding: 80px 30px 30px;
+  gap: 30px;
+  z-index: calc(var(--header-z-index) + 1);
+  transition: right 0.4s ease;
+}
 
+.side-panel.open {
+  right: 0;
+}
+
+.side-panel a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  font-family: monospace;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 16px;
+  transition: color var(--transition-speed) ease;
+}
+
+.side-panel a:hover {
+  color: var(--nav-hover-color);
+}
+
+/* Overlay */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: var(--header-z-index);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-speed) ease, visibility var(--transition-speed) ease;
+}
+
+.menu-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  :root {
+    --header-padding: 15px 20px;
+    --logo-font-size: 24px;
+  }
+
+  .logo {
+    margin-left: 0;
+  }
+
+  .nav a {
+    display: none;
+  }
+
+  .hamburger-menu {
+    display: flex;
+  }
+}

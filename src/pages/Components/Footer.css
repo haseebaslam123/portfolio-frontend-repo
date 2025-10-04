@@ -1,21 +1,64 @@
-/* Footer Styles */
+/* CSS Variables for easy customization */
+:root {
+  --footer-bg: rgba(0, 0, 0, 0.096);
+  --footer-blur: 15px;
+  --footer-padding: 20px 0;
+  --footer-z-index: 100;
+  
+  --footer-max-width: 1200px;
+  --footer-content-padding: 0 20px;
+  --footer-gap: 20px;
+  
+  --website-text-size: 1.6rem;
+  --website-text-weight: 500;
+  --website-text-spacing: 0.5px;
+  --icon-overlay-size: 1.7rem;
+  --icon-overlay-opacity: 0.8;
+  
+  --made-with-text-size: 0.9rem;
+  --made-with-text-opacity: 0.9;
+  --made-with-right-offset: 30px;
+  
+  --tech-icon-size: 30px;
+  --tech-icon-radius: 6px;
+  --tech-icon-font-size: 1.2rem;
+  --tech-icon-gap: 10px;
+  
+  --react-icon-size: 35px;
+  --react-icon-color: #61dafb;
+  --react-icon-right-offset: 30px;
+  --react-rotation-duration: 3s;
+  
+  --social-link-size: 40px;
+  --social-link-font-size: 1.2rem;
+  --social-link-gap: 15px;
+  --social-hover-lift: -3px;
+  
+  --whatsapp-bg: #25d366;
+  --email-bg: #ea4335;
+  --social-text-color: white;
+  
+  --transition-speed: 0.3s;
+}
+
+/* Footer */
 .footer {
-  background: rgba(0, 0, 0, 0.096); /* More transparent background */
-  backdrop-filter: blur(15px); /* Stronger blur effect */
-  padding: 20px 0;
+  background: var(--footer-bg);
+  backdrop-filter: blur(var(--footer-blur));
+  padding: var(--footer-padding);
   position: relative;
-  z-index: 100;
+  z-index: var(--footer-z-index);
 }
 
 .footer-content {
-  max-width: 1200px;
+  max-width: var(--footer-max-width);
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  padding: var(--footer-content-padding);
   flex-wrap: wrap;
-  gap: 20px;
+  gap: var(--footer-gap);
 }
 
 /* Left Section - Website Info */
@@ -33,58 +76,57 @@
 
 .website-text {
   color: var(--text-color);
-  font-family:  monospace;
-  font-size: 1.6rem;
-  font-weight: 500;
-  letter-spacing: 0.5px;
+  font-family: monospace;
+  font-size: var(--website-text-size);
+  font-weight: var(--website-text-weight);
+  letter-spacing: var(--website-text-spacing);
 }
 
 .icon-overlay {
-  font-size: 1.7rem;
-  opacity: 0.8;
+  font-size: var(--icon-overlay-size);
+  opacity: var(--icon-overlay-opacity);
 }
 
 /* Middle Section - Made with */
 .footer-middle {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: var(--tech-icon-gap);
   flex-wrap: wrap;
 }
 
 .made-with-text {
   color: var(--text-color);
-  font-family:  monospace;
-  font-size: 0.9rem;
-  opacity: 0.9;
+  font-family: monospace;
+  font-size: var(--made-with-text-size);
+  opacity: var(--made-with-text-opacity);
   position: relative;
-  right: 30px;
-  
+  right: var(--made-with-right-offset);
 }
 
 .tech-icons {
   display: flex;
-  gap: 10px;
+  gap: var(--tech-icon-gap);
 }
 
 .tech-icon {
-  width: 30px;
-  height: 30px;
-  border-radius: 6px;
+  width: var(--tech-icon-size);
+  height: var(--tech-icon-size);
+  border-radius: var(--tech-icon-radius);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
-  transition: transform 0.3s ease;
+  font-size: var(--tech-icon-font-size);
+  transition: transform var(--transition-speed) ease;
 }
 
 .react-icon {
   background: transparent;
-  color: #61dafb;
-  animation: rotate 3s linear infinite;
-  font-size: 35px;
+  color: var(--react-icon-color);
+  animation: rotate var(--react-rotation-duration) linear infinite;
+  font-size: var(--react-icon-size);
   position: relative;
-  right: 30px;
+  right: var(--react-icon-right-offset);
 }
 
 @keyframes rotate {
@@ -95,7 +137,6 @@
     transform: rotate(360deg);
   }
 }
-
 
 .tech-icon:hover {
   transform: scale(1.1);
@@ -109,76 +150,62 @@
 
 .social-links {
   display: flex;
-  gap: 15px;
+  gap: var(--social-link-gap);
 }
 
 .social-link {
-  width: 40px;
-  height: 40px;
+  width: var(--social-link-size);
+  height: var(--social-link-size);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  transition: all 0.3s ease;
-  font-size: 1.2rem;
+  transition: all var(--transition-speed) ease;
+  font-size: var(--social-link-font-size);
 }
 
 .whatsapp {
-  background: #25d366;
-  color: white;
+  background: var(--whatsapp-bg);
+  color: var(--social-text-color);
 }
 
 .email {
-  background: #ea4335;
-  color: white;
+  background: var(--email-bg);
+  color: var(--social-text-color);
 }
 
 .social-link:hover {
-  transform: translateY(-3px);
+  transform: translateY(var(--social-hover-lift));
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  :root {
+    --website-text-size: 1rem;
+    --made-with-text-size: 0.8rem;
+    --tech-icon-size: 25px;
+    --tech-icon-font-size: 1rem;
+    --social-link-size: 35px;
+    --social-link-font-size: 1rem;
+    --footer-gap: 15px;
+  }
+
   .footer-content {
     flex-direction: column;
     text-align: center;
-    gap: 15px;
-  }
-  
-  .website-text {
-    font-size: 1rem;
-  }
-  
-  .made-with-text {
-    font-size: 0.8rem;
-  }
-  
-  .tech-icon {
-    width: 25px;
-    height: 25px;
-    font-size: 1rem;
-  }
-  
-  .social-link {
-    width: 35px;
-    height: 35px;
-    font-size: 1rem;
   }
 }
 
 @media (max-width: 480px) {
-  .footer-content {
-    padding: 0 15px;
+  :root {
+    --footer-content-padding: 0 15px;
+    --social-link-gap: 10px;
   }
-  
+
   .footer-middle {
     flex-direction: column;
-    gap: 10px;
-  }
-  
-  .social-links {
     gap: 10px;
   }
 }

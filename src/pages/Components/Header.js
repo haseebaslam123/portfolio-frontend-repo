@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./Header.css";
-import "./mobile.css"; // Import mobile styles
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 

@@ -1,138 +1,59 @@
+/* CSS Variables for easy customization */
+:root {
+  --projects-padding: 50px 10%;
+  --projects-gap: 20px;
+  --projects-grid-min: 280px;
+  
+  --section-title-size: 2.1rem;
+  --card-title-size: 1.2rem;
+  --card-text-size: 17px;
+  --tag-size: 0.8rem;
+  
+  --card-bg: #1a1a1a;
+  --card-bg-hover: #ff4081;
+  --card-radius: 12px;
+  --card-top-offset: 40px;
+  --card-hover-lift: -10px;
+  
+  --image-height: 200px;
+  --image-brightness-hover: 0.5;
+  
+  --tag-padding: 4px 8px;
+  --tag-radius: 8px;
+  --tag-border: 1px solid #666;
+  --tag-bg-hover: #1a1a1a;
+  
+  --overlay-gap: 15px;
+  --overlay-btn-padding: 10px 18px;
+  --overlay-btn-radius: 6px;
+  
+  --accent-color: #1abc9c;
+  --text-color-light: white;
+  --overlay-btn-bg: #fff;
+  --overlay-btn-color: #333;
+  
+  --transition-speed: 0.3s;
+  --animation-duration: 1s;
+  --glow-duration: 2s;
+}
+
+/* Projects Section */
 .projects-section {
-  padding: 50px 10%;
+  padding: var(--projects-padding);
   background: var(--bg-color);
   background: transparent;
   transition: opacity 0.6s ease, transform 0.6s ease;
-
 }
 
-/* Section title */
+/* Section Title */
 .section-title {
-  font-size: 2.1rem;
+  font-size: var(--section-title-size);
   text-align: center;
-  color: #1abc9c;
-  font-family: monospace;
-
-  
-}
-
-
-
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-}
-
-/* Project card (hidden by default) */
-.project-card {
-  background: #1a1a1a;
-  border-radius: 12px;
-  transition: all 0.3s ease;
-  position: relative;
-  top: 40px;
-
-  display: flex;              /* make it flexbox */
-  flex-direction: column;     /* vertical layout */
-}
-
-/* Hover effect */
-.project-card:hover {
-  background: #ff4081; /* pink hover */
-  transform: translateY(-10px);
-}
-
-.project-card.hidden-card {
-  opacity: 0;
-  transform: translateY(50px);
-}
-
-
-/* Animate when section in view */
-.project-card.animate-card {
-  animation: tiltIn 1s ease;
-  transform-origin: center; /* pivot around center */
-}
-
-@keyframes tiltIn {
-  0% {
-    opacity: 0;
-    transform: perspective(800px) rotateX(20deg); /* top back, bottom forward */
-  }
-  40% {
-    opacity: 1;
-    transform: perspective(800px) rotateX(-15deg); /* top forward, bottom back */
-  }
-  70% {
-    transform: perspective(800px) rotateX(8deg);
-  }
-  100% {
-    transform: perspective(800px) rotateX(0deg); /* settle flat */
-  }
-}
-
-
-
-
-/* Image */
-.project-image img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-
-/* Content */
-.project-content {
-  flex: 1;                     /* take remaining height */
-  display: flex;
-  flex-direction: column;      /* stack title, desc, tags */
-  padding: 15px;
-  color: white;
+  color: var(--accent-color);
   font-family: monospace;
 }
 
-.project-content h3 {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-  color: white;
-  font-family: monospace;
-}
-
-.project-content p {
-  font-size: 17px;
-  color: white;
-  margin-bottom: 12px;
-  font-family: monospace;
-  flex-grow: 1;                /* push tags to bottom */
-}
-
-/* Tags */
-.project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  font-family: monospace;
-  margin-top: auto;            /* stick tags at bottom */
-}
-
-.tag {
-  padding: 4px 8px;
-  border-radius: 8px;
-  font-size: 0.8rem;
-  background: transparent;
-  border: 1px solid #666;
-  color: white;
-  transition: background 0.3s ease, color 0.3s ease, border 0.3s ease;
-}
-
-.project-card:hover .tag {
-  background: #1a1a1a;
-  color: white;
-  border: 1px solid #1a1a1a;
-}
-
-
-/* Section hidden/visible states */
+/* Section Animation States */
 .hidden-section {
   opacity: 0;
   transform: translateY(50px);
@@ -143,7 +64,7 @@
   transform: translateY(0);
 }
 
-/* Title hidden/visible */
+/* Title Animation States */
 .hidden-title {
   opacity: 0;
   transform: translateX(0px);
@@ -155,74 +76,120 @@
   transform: translateX(0px);
 }
 
+/* Projects Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--projects-grid-min), 1fr));
+  gap: var(--projects-gap);
+}
 
+/* Project Card */
+.project-card {
+  background: var(--card-bg);
+  border-radius: var(--card-radius);
+  transition: all var(--transition-speed) ease;
+  position: relative;
+  top: var(--card-top-offset);
+  display: flex;
+  flex-direction: column;
+}
 
+/* Card Hover Effect */
+.project-card:hover {
+  background: var(--card-bg-hover);
+  transform: translateY(var(--card-hover-lift));
+}
 
+/* Card Hidden State */
+.project-card.hidden-card {
+  opacity: 0;
+  transform: translateY(50px);
+}
 
+/* Card Animation */
+.project-card.animate-card {
+  animation: tiltIn var(--animation-duration) ease;
+  transform-origin: center;
+}
 
+@keyframes tiltIn {
+  0% {
+    opacity: 0;
+    transform: perspective(800px) rotateX(20deg);
+  }
+  40% {
+    opacity: 1;
+    transform: perspective(800px) rotateX(-15deg);
+  }
+  70% {
+    transform: perspective(800px) rotateX(8deg);
+  }
+  100% {
+    transform: perspective(800px) rotateX(0deg);
+  }
+}
 
-
-
-
+/* Image Container */
 .project-image-container {
   position: relative;
   width: 100%;
-  height: 200px; /* fix height for all cards */
+  height: var(--image-height);
   overflow: hidden;
-  border-radius: 8px; /* optional rounded corners */
+  border-radius: var(--card-radius);
 }
 
 .project-image {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* keeps proportions, crops overflow */
+  object-fit: cover;
   display: block;
-  transition: filter 0.3s ease;
+  transition: filter var(--transition-speed) ease;
 }
 
-/* Dim the image on hover */
+/* Dim Image on Hover */
 .project-card:hover .project-image {
-  filter: brightness(0.5);
+  filter: brightness(var(--image-brightness-hover));
 }
 
+/* Overlay Buttons */
 .overlay {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
-  gap: 15px;
+  gap: var(--overlay-gap);
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity var(--transition-speed) ease;
 }
 
-/* Show overlay on hover */
+/* Show Overlay on Hover */
 .project-card:hover .overlay {
   opacity: 1;
 }
 
 .overlay-btn {
-  padding: 10px 18px;
-  background: #fff;
-  color: #333;
-  border-radius: 6px;
+  padding: var(--overlay-btn-padding);
+  background: var(--overlay-btn-bg);
+  color: var(--overlay-btn-color);
+  border-radius: var(--overlay-btn-radius);
   text-decoration: none;
   font-weight: bold;
-  transition: transform 0.2s ease, color 0.3s ease, background 0.3s ease;
-  
-  /* Glow effect */
+  transition: transform 0.2s ease, 
+              color var(--transition-speed) ease, 
+              background var(--transition-speed) ease;
   box-shadow: 0 0 8px rgba(255, 64, 129, 0.5);
-  animation: glowPulse 2s infinite ease-in-out;
+  animation: glowPulse var(--glow-duration) infinite ease-in-out;
 }
 
-/* Hover effect */
+/* Overlay Button Hover */
 .overlay-btn:hover {
-  background: #ff4081;
-  color: white;
+  background: var(--card-bg-hover);
+  color: var(--text-color-light);
   transform: scale(1.1);
 }
 
-/* Glow animation */
+/* Glow Animation */
 @keyframes glowPulse {
   0% {
     box-shadow: 0 0 6px rgba(255, 64, 129, 0.5),
@@ -238,5 +205,96 @@
     box-shadow: 0 0 6px rgba(255, 64, 129, 0.5),
                 0 0 12px rgba(255, 64, 129, 0.3);
     filter: brightness(0.9);
+  }
+}
+
+/* Project Content */
+.project-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  color: var(--text-color-light);
+  font-family: monospace;
+}
+
+.project-content h3 {
+  font-size: var(--card-title-size);
+  margin-bottom: 10px;
+  color: var(--text-color-light);
+  font-family: monospace;
+}
+
+.project-content p {
+  font-size: var(--card-text-size);
+  color: var(--text-color-light);
+  margin-bottom: 12px;
+  font-family: monospace;
+  flex-grow: 1;
+}
+
+/* Tags */
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-family: monospace;
+  margin-top: auto;
+}
+
+.tag {
+  padding: var(--tag-padding);
+  border-radius: var(--tag-radius);
+  font-size: var(--tag-size);
+  background: transparent;
+  border: var(--tag-border);
+  color: var(--text-color-light);
+  transition: background var(--transition-speed) ease, 
+              color var(--transition-speed) ease, 
+              border var(--transition-speed) ease;
+}
+
+.project-card:hover .tag {
+  background: var(--tag-bg-hover);
+  color: var(--text-color-light);
+  border: 1px solid var(--tag-bg-hover);
+}
+
+/* Image (Fallback for older structure) */
+.project-image img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+/* Mobile Responsive */
+@media (max-width: 968px) {
+  :root {
+    --projects-padding: 40px 5%;
+    --section-title-size: 1.8rem;
+    --projects-grid-min: 250px;
+    --card-top-offset: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --projects-padding: 30px 5%;
+    --section-title-size: 1.5rem;
+    --projects-grid-min: 100%;
+    --card-title-size: 1.1rem;
+    --card-text-size: 15px;
+    --image-height: 180px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --overlay-btn-padding: 8px 14px;
+    --overlay-gap: 10px;
   }
 }
