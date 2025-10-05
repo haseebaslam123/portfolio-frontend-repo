@@ -261,17 +261,42 @@ h2 {
     text-align: center;
   }
 
-  .home-left {
-    max-width: 100%;
-  }
-
+  /* Image comes FIRST on mobile */
   .home-right {
+    order: -1;
     width: 100%;
     left: 0;
+  }
+
+  .home-right img {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  /* Text content comes AFTER image */
+  .home-left {
+    max-width: 100%;
+    order: 0;
+  }
+
+  /* Fix typing animation - allow text to wrap with fixed height */
+  .role {
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    min-height: 80px;
+    display: flex;
+    align-items: flex-start;
+    line-height: 1.8;
   }
 
   .social-links {
     justify-content: center;
     margin-left: 0;
+  }
+
+  h2 {
+    top: 0;
   }
 }

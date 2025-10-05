@@ -1,4 +1,66 @@
-/* CSS Variables - only for easy customization, NO visual changes */
+/* Mobile Responsive */
+@media screen and (max-width: 968px) {
+  :root {
+    --skills-padding: 60px 10px;
+    --timeline-left: 0;
+    --title-size: 1.5rem;
+    --text-size: 1rem;
+    --icon-size: 36px;
+    --icon-gap: 12px;
+  }
+
+ .timeline {
+    grid-template-columns: repeat(2, 1fr) !important;
+    left: 0 !important;
+    gap: 50px 10px !important;
+  }
+
+  .timeline-item {
+    width: 100%;
+    gap: 8px;
+  }
+
+  .timeline-item.left,
+  .timeline-item.right {
+    left: 0;
+    text-align: left;
+  }
+
+  .timeline-dot {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+  }
+
+  .timeline-content {
+    width: 100%;
+    min-width: auto;
+    margin-left: 0;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .timeline-content h3 {
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+  }
+
+  .progress {
+    height: 18px;
+  }
+
+  .progress-text {
+    font-size: 0.7rem;
+    right: 5px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --skills-padding: 40px 10px;
+    --icon-size: 32px;
+  }
+}/* CSS Variables - only for easy customization, NO visual changes */
 :root {
   --skills-padding: 80px 20px;
   --timeline-gap-row: 40px;
@@ -13,6 +75,7 @@
   --content-min-width: 200px;
   --content-margin-left: 10px;
   
+
   
   --icon-size: 42px;
   --icon-gap: 18px;
@@ -22,6 +85,7 @@
   --title-size: 2rem;
   --text-size: 1.1rem;
   --skill-title-size: 1.1rem;
+  
   
   --underline-width: 60px;
   --underline-height: 3px;
@@ -305,41 +369,4 @@ body {
 
 .h2h{
   font-family: monospace;
-}
-
-
-
-/* Mobile Responsive */
-@media (max-width: 968px) {
-  :root {
-    --skills-padding: 60px 15px;
-    --timeline-left-offset: 0;
-    --section-title-size: 1.5rem;
-    --section-text-size: 1rem;
-    --icon-size: 36px;
-    --icon-gap: 12px;
-  }
-
-  .timeline {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-
-  .timeline-item.left,
-  .timeline-item.right {
-    left: 0;
-    text-align: left;
-  }
-
-  .timeline-content {
-    min-width: 100%;
-    margin-left: 0;
-  }
-}
-
-@media (max-width: 768px) {
-  :root {
-    --skills-padding: 40px 10px;
-    --icon-size: 32px;
-  }
 }
