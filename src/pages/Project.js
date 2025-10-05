@@ -18,7 +18,7 @@ export default function Projects() {
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.2 }
     );
 
     if (currentSection) observer.observe(currentSection);
@@ -29,22 +29,6 @@ export default function Projects() {
   }, []);
 
   const projects = [
-    {
-      title: "Amazon Clone",
-      description:
-        "Developed a fully responsive clone of Amazon’s product page using HTML, CSS, and JavaScript. Implemented structured layouts, interactive elements, and styled components to closely replicate the look and feel of a professional e-commerce platform.",
-      image: "/icons/amazon.PNG",
-      tags: ["HTML", "CSS", "JavaScript"],
-      demoLink: "https://amazon-starter-page.netlify.app",
-    },
-    {
-      title: "Tic-Tac-Toe Game",
-      description:
-        "Created a browser-based Tic-Tac-Toe game using HTML, CSS, and JavaScript. Designed an engaging user interface with real-time win/draw detection logic and smooth interactivity for a fun user experience.",
-      image: "/icons/tiktoe.PNG",
-      tags: ["HTML", "CSS", "JavaScript"],
-      demoLink: "https://tik-toe-game.netlify.app",
-    },
     {
       title: "Weather Detection App",
       description:
@@ -61,6 +45,24 @@ export default function Projects() {
       tags: ["React.jsx", "HTML", "CSS", "JavaScript"],
       demoLink: "https://movies-trailer-exhibition.netlify.app",
     },
+    {
+      title: "Tic-Tac-Toe Game",
+      description:
+        "Created a browser-based Tic-Tac-Toe game using HTML, CSS, and JavaScript. Designed an engaging user interface with real-time win/draw detection logic and smooth interactivity for a fun user experience.",
+      image: "/icons/tiktoe.PNG",
+      tags: ["HTML", "CSS", "JavaScript"],
+      demoLink: "https://tik-toe-game.netlify.app",
+    },
+    {
+      title: "Amazon Clone",
+      description:
+        "Developed a fully responsive clone of Amazon’s product page using HTML, CSS, and JavaScript. Implemented structured layouts, interactive elements, and styled components to closely replicate the look and feel of a professional e-commerce platform.",
+      image: "/icons/amazon.PNG",
+      tags: ["HTML", "CSS", "JavaScript"],
+      demoLink: "https://amazon-starter-page.netlify.app",
+    }
+    
+    
   ];
 
   return (

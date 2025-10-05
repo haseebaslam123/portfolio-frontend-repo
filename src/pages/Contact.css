@@ -349,7 +349,7 @@
     --contact-title-size: 1.8rem;
     --contact-subtitle-size: 0.9rem;
     --box-padding: 20px 40px;
-    --box-width: 100%;
+    --box-width: 90%;
     --form-max-width: 100%;
     --button-width: 60%;
   }
@@ -357,6 +357,11 @@
   .contact-boxes {
     flex-direction: column;
     align-items: center;
+    padding-left: 20px;
+  }
+
+  .contact-box {
+    margin-left: 0;
   }
 
   .popup {
@@ -374,5 +379,9 @@
     --box-padding: 15px 30px;
     --button-width: 80%;
     --success-title-size: 2rem;
+  }
+
+  .contact-boxes {
+    padding-left: 15px;
   }
 }

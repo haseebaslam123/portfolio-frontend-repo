@@ -132,17 +132,17 @@
   transform: rotate(var(--about-img-rotate));
 }
 
-/* Fade-up Animation */
+/* Fade-up Animation - REPLACED with slide-in-left */
 .about .fade-up {
   opacity: 0;
-  transform: translateY(40px);
+  transform: translateX(-100px);
   transition: opacity var(--animation-duration) ease, 
               transform var(--animation-duration) ease;
 }
 
 .about.animate .fade-up {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateX(0);
 }
 
 /* Slide-right Animation for Image */

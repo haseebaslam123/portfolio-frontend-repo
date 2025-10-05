@@ -196,6 +196,18 @@
     flex-direction: column;
     text-align: center;
   }
+
+  .footer-middle {
+    padding-right: 40px;
+  }
+
+  .made-with-text {
+    right: 0;
+  }
+
+  .react-icon {
+    right: 0;
+  }
 }
 
 @media (max-width: 480px) {
@@ -207,5 +219,6 @@
   .footer-middle {
     flex-direction: column;
     gap: 10px;
+    padding-right: 30px;
   }
 }
