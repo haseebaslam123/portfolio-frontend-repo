@@ -30,6 +30,15 @@ export default function Projects() {
 
   const projects = [
     {
+  title: "Real-Time Chat Application",
+  description:
+    "Developed a full-featured real-time chat app using the MERN stack (MongoDB, Express.js, React.js, Node.js) with Socket.io integration for instant messaging, online user tracking, and message notifications. Includes JWT-based authentication, responsive UI, and smooth frontend-backend synchronization for seamless communication.",
+  image: "/icons/chatapp.PNG",
+  tags: ["MongoDB", "Express.js", "React.js", "Node.js", "Socket.io"],
+  demoLink: "https:chats-with-anyone.netlify.app",
+},
+
+    {
       title: "Weather Detection App",
       description:
         "Built a responsive weather app using React (JSX), HTML, CSS, and JavaScript that fetches real-time conditions and a 5-day forecast for any city worldwide with a clean, interactive UI.",
