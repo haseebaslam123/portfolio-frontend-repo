@@ -35,7 +35,7 @@ export default function Projects() {
     "Developed a full-featured real-time chat app using the MERN stack (MongoDB, Express.js, React.js, Node.js) with Socket.io integration for instant messaging, online user tracking, and message notifications. Includes JWT-based authentication, responsive UI, and smooth frontend-backend synchronization for seamless communication.",
   image: "/icons/chatapp.PNG",
   tags: ["MongoDB", "Express.js", "React.js", "Node.js", "Socket.io"],
-  demoLink: "https:chats-with-anyone.netlify.app",
+  demoLink: "https://chats-with-anyone.netlify.app",
 },
 
     {
